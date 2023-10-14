@@ -37,17 +37,17 @@ return {
 
       mason_lspconfig.setup_handlers({
         function(server_name)
-          lspconfig[server_name].setup({
+          local defaults = {
             on_attach = lsp_utils.on_attach,
             capabilities = lsp_utils.capabilities,
-          })
+          }
+          local has_custom_settings, custom_settings = pcall(require, "plugins.lsp.settings." .. server_name)
+          if has_custom_settings then
+            defaults = vim.tbl_deep_extend("force", defaults, custom_settings)
+          end
+          lspconfig[server_name].setup(defaults)
         end
       })
-
-      -- leer configuraciones de servers desde directorio settings
-      --for _,server in pairs(servers) do
-      --  server = vim.split(server, "@")[1]
-      --end
     end
   },
   {
