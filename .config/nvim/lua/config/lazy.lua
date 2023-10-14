@@ -12,13 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-  install = { colorscheme = { "onedarker" } },
-	defaults = { lazy = true },
-	ui = {
-		border = "rounded",
-	},
-	checker = { enabled = true },
-	debug = false,
+  defaults = { lazy = true },
+  ui = {
+    border = "rounded",
+  },
+  checker = { enabled = true },
+  debug = false
 }
 
 require("lazy").setup("plugins", opts)
