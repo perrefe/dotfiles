@@ -18,9 +18,8 @@ return {
         "ansiblels",
         "bashls",
         "dockerls",
-        --"gopls",
         --"jdtls",
-        "ruby_ls",
+        --"ruby_ls",
         "sqlls",
         "html",
         "tsserver",
@@ -32,7 +31,7 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = servers,
-        automatic_installation = true
+        automatic_installation = { exclude = { "gopls" } }
       })
 
       mason_lspconfig.setup_handlers({
@@ -47,6 +46,14 @@ return {
           end
           lspconfig[server_name].setup(defaults)
         end
+      })
+
+      -- gopls
+      lspconfig.gopls.setup({
+        on_attach = lsp_utils.on_attach,
+        capabilities = lsp_utils.capabilities,
+        cmd = { "gopls" },
+        filetypes = { "go" }
       })
     end
   },
