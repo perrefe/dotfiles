@@ -1,0 +1,24 @@
+export MANPAGER='nvim +Man!'
+export EDITOR=vim
+export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
+
+# SDKMan
+export SDKMAN_DIR="$HOME/.sdkman"
+
+# Loki CLI
+export LOKI_ADDR=http://192.168.13.11:33100
+
+# AWS Amplify
+export PATH="$HOME/.amplify/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Kube configs
+export KUBECONFIG=~/.kube/dev-soar.config
+
+# Serverless
+export PATH="$HOME/.serverless/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+
