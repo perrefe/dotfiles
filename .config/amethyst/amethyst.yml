@@ -40,3 +40,16 @@ layouts:
 # Add 10px margin between windows
 #window-margins: true
 #window-margin-size: 10
+
+# List of bundle identifiers for applications to either be automatically floating or automatically tiled based on floating-is-blacklist (default []).
+floating: [
+  com.amethyst.Amethyst,
+  io.balena.etcher,
+  com.apple.systempreferences,
+  com.apple.ScreenContinuity,
+  com.microsoft.rdc.macos,
+  org.deskflow.deskflow
+]
+
+# true if the applications above should be floating and all others tiled (default true).
+floating-is-blacklist: true
