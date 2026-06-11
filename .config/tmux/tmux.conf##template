@@ -1,0 +1,173 @@
+#########################################################################
+# List of plugins
+#########################################################################
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'omerxx/tmux-sessionx'
+
+#########################################################################
+# Global options
+#########################################################################
+set -g prefix `
+bind ` send-prefix
+#unbind C-b
+
+set-option -sg escape-time 10
+set-option -sg history-limit 32000
+set-option -sg default-shell /bin/zsh
+set-option -sg allow-rename off
+set-option -sg history-file ~/.tmux_history
+# Start window and pane indices at 1.
+set-option -sg base-index 1
+set-option -sg pane-base-index 1
+set-option -g renumber-windows on
+# Add true color & italics support with alacritty terminal
+# set-option -sg default-terminal "alacritty"
+#set-option -sg default-terminal "tmux-256color"
+set-option -g focus-events on
+set-option -sa terminal-overrides ',xterm*:Tc'
+#########################################################################
+# Buffers
+#########################################################################
+# choose which buffer to paste from
+bind b choose-buffer
+# paste from the top paste buffer
+bind v paste-buffer
+
+#########################################################################
+# Status Line
+#########################################################################
+
+# Length of tmux status line
+set -g status-left-length 30
+set -g status-right-length 150
+
+set-option -g status "on"
+
+# Default statusbar color
+set-option -g status-style bg=colour237,fg=colour223 # bg=bg1, fg=fg1
+
+# Default window title colors
+set-window-option -g window-status-style bg=colour214,fg=colour237 # bg=yellow, fg=bg1
+
+# Default window with an activity alert
+set-window-option -g window-status-activity-style bg=colour237,fg=colour248 # bg=bg1, fg=fg3
+
+# Active window title colors
+set-window-option -g window-status-current-style bg=red,fg=colour237 # fg=bg1
+
+# Set active pane border color
+set-option -g pane-active-border-style fg=colour214
+
+# Set inactive pane border color
+set-option -g pane-border-style fg=colour239
+
+# Message info
+set-option -g message-style bg=colour239,fg=colour223 # bg=bg2, fg=fg1
+
+# Writing commands inactive
+set-option -g message-command-style bg=colour239,fg=colour223 # bg=fg3, fg=bg1
+
+# Pane number display
+set-option -g display-panes-active-colour colour1 #fg2
+set-option -g display-panes-colour colour237 #bg1
+
+# Clock
+set-window-option -g clock-mode-colour colour109 #blue
+
+# Bell
+set-window-option -g window-status-bell-style bg=colour167,fg=colour235 # bg=red, fg=bg
+
+set-option -g status-left "\
+#[fg=colour7, bg=colour241]#{?client_prefix,#[bg=colour167],}  #S \
+#[fg=colour241, bg=colour237]#{?client_prefix,#[fg=colour167],}#{?window_zoomed_flag, 🔍,}"
+
+set-option -g status-right "\
+#[fg=colour214, bg=colour237] \
+#[fg=colour237, bg=colour214] #(~/dotfiles/tmux_scripts/music.sh) \
+#[fg=colour223, bg=colour237] #(~/dotfiles/tmux_scripts/uptime.sh) \
+#[fg=colour246, bg=colour237]  %b %d '%y\
+#[fg=colour109]  %H:%M \
+#[fg=colour248, bg=colour239]"
+
+set-window-option -g window-status-current-format "\
+#[fg=colour237, bg=colour214]\
+#[fg=colour239, bg=colour214] #I* \
+#[fg=colour239, bg=colour214, bold] #W \
+#[fg=colour214, bg=colour237]"
+
+set-window-option -g window-status-separator ''
+
+set-window-option -g window-status-format "\
+#[fg=colour237,bg=colour239,noitalics]\
+#[fg=colour223,bg=colour239] #I \
+#[fg=colour223, bg=colour239] #W \
+#[fg=colour239, bg=colour237]"
+
+# Set the history limit so we get lots of scrollback.
+# be notified when there is activity in one of your windows
+setw -g monitor-activity on
+setw -g mouse on
+setw -g mode-keys vi
+
+#########################################################################
+# Bindings
+#########################################################################
+# reload tmux conf
+bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "~/.config/tmux/tmux.conf reloaded"
+bind-key M split-window -h "vim ~/.config/tmux/tmux.conf"
+
+# Use | and - to split a window vertically and horizontally instead of " and % respoectively
+unbind '"'
+unbind %
+bind % split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# Navigation ————————————————————
+# Pane Switching with Ctrl+Alt+Arrow keys
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Pane Switching with Ctrl+Alt+Vim keys
+bind -n C-M-h select-pane -L
+bind -n C-M-l select-pane -R
+bind -n C-M-k select-pane -U
+bind -n C-M-j select-pane -D
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D 
+bind k select-pane -U
+bind l select-pane -R
+
+# Resize panes
+bind-key -r j resize-pane -D
+bind-key -r k resize-pane -U
+bind-key -r h resize-pane -L
+bind-key -r l resize-pane -R
+
+# Shift arrow to switch windows
+bind -n S-Left  previous-window
+bind -n S-Right next-window
+
+# Prefix + / to search
+bind-key / copy-mode \; send-key ?
+
+# Setup 'v' to begin selection, just like Vim
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+
+# Setup 'y' to yank (copy), just like Vim
+{% if yadm.os == "Darwin" %}
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
+{% else %}
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "xclip -selection clipboard -i"
+{% endif %}
+
+bind-key -T copy-mode-vi 'V' send -X select-line
+bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
+
+# Initialize tmux plugin manager
+run '~/.tmux/plugins/tpm/tpm'
