@@ -41,14 +41,14 @@ blinking = "Always"
 shape = "Block"
 
 [font]
-size = 14.0
+size = 13.0
 
 [font.bold]
-family = "FiraCode Nerd Font Mono"
+family = "Hack Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "FiraCode Nerd Font Mono"
+family = "Hack Nerd Font Mono"
 style = "Bold Italic"
 
 [font.glyph_offset]
@@ -56,12 +56,11 @@ x = 0
 y = 2
 
 [font.italic]
-family = "FiraCode Nerd Font Mono"
+family = "Hack Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "FiraCode Nerd Font Mono"
-style = "Retina"
+family = "Hack Nerd Font Mono"
 
 [font.offset]
 x = 0
@@ -143,10 +142,6 @@ hide_when_typing = false
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
-
-[shell]
-args = ["-l", "-c", ".local/bin/ta"]
-program = "/usr/local/bin/zsh"
 
 [window]
 decorations = "buttonless"
