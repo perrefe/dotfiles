@@ -1,0 +1,17 @@
+function append_to_bashrc() {
+  set -e
+
+  local line file lno
+  line="$1"
+  file="$HOME/.bashrc"
+  lno=""
+
+  if [ -f "$file" ]; then
+    lno=$(\grep -nF "$line" "$file" | sed 's/:.*//' | tr '\n' ' ')
+    if [ ! -n "$lno" ]; then
+      echo >> "$file"
+      echo "$line" >> "$file"
+    fi
+  fi
+  set +e
+}

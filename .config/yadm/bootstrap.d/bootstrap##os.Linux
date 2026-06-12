@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo ""
+echo "                 _            "
+echo " _   _  __ _  __| |_ __ ___   "
+echo "| | | |/ _\` |/ _\` | '_ \` _ \  "
+echo "| |_| | (_| | (_| | | | | | | "
+echo " \__, |\__,_|\__,_|_| |_| |_| "
+echo " |___/                        "
+echo "        ...bootstraping system $(uname -s)"
+echo ""
+
+source $(dirname $0)/functions
+
+sudo apt update && sudo apt autoremove -y && sudo apt install -y \
+  git git-flow tmux ca-certificates zip \
+  curl httpie tldr zoxide fd-find ripgrep \
+  make gcc python3 python3-pip xclip direnv jq \
+  neovim
+
+# respalda configuracion de bash antes de generar cambios
+cp ~/.bashrc ~/.bashrc.yadm.bak
+
+# zoxide
+if command -v zoxide > /dev/null 2>&1; then
+  append_to_bashrc "eval \"\$(zoxide init bash)\""
+fi
+
+# tmux plugin manager
+[ ! -d ~/.tmux/plugins/tpm ] && mkdir -p ~/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
+
+# fzf
+[ ! -d ~/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --key-bindings --completion --update-rc || true

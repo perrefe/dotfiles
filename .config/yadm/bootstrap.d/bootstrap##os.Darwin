@@ -1,0 +1,18 @@
+echo ""
+echo "                 _            "
+echo " _   _  __ _  __| |_ __ ___   "
+echo "| | | |/ _\` |/ _\` | '_ \` _ \  "
+echo "| |_| | (_| | (_| | | | | | | "
+echo " \__, |\__,_|\__,_|_| |_| |_| "
+echo " |___/                        "
+echo "        ...bootstraping system $(uname -s)"
+echo ""
+
+echo "Para comenzar a utilizar la configuracion de zsh propuesta"
+echo "se debe editar el archivo \$HOME/.zprofile y agregar lo siguiente"
+echo "y reiniciar el terminal"
+echo ""
+echo "export ZDOTDIR=\$HOME/.config/zsh"
+echo ""
+
+brew bundle install --file ~/.Brewfile

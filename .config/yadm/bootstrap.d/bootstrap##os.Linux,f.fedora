@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo ""
+echo "                 _            "
+echo " _   _  __ _  __| |_ __ ___   "
+echo "| | | |/ _\` |/ _\` | '_ \` _ \  "
+echo "| |_| | (_| | (_| | | | | | | "
+echo " \__, |\__,_|\__,_|_| |_| |_| "
+echo " |___/                        "
+echo "        ...bootstraping system $(uname -s)"
+echo ""
+
+sudo dnf copr enable atim/starship -y
+sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
+  git gitflow tmux ca-certificates zip starship \
+  curl tldr zoxide fd-find ripgrep zsh \
+  just direnv jq neovim fzf zsh btop htop
+
+# Zsh as default shell
+sudo chsh -s "$(command -v zsh)" "$USER"
+
+# tmux plugin manager
+[ ! -d ~/.config/tmux/plugins/tpm ] && mkdir -p ~/.config/tmux/plugins && git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm || true

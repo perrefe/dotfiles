@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo ""
+echo "                 _            "
+echo " _   _  __ _  __| |_ __ ___   "
+echo "| | | |/ _\` |/ _\` | '_ \` _ \  "
+echo "| |_| | (_| | (_| | | | | | | "
+echo " \__, |\__,_|\__,_|_| |_| |_| "
+echo " |___/                        "
+echo "        ...bootstraping system WSL $(uname -s)"
+echo ""
+
+source $(dirname $0)/functions
+
+sudo apt update && sudo apt install -y \
+  git git-flow tmux ca-certificates curl httpie tldr zoxide fd-find ripgrep \
+  make gcc python3 python3-pip xclip unzip zip zsh direnv pass jq
+
+# mise
+[ ! -x ~/.local/bin/mise ] && curl https://mise.run | sh
+eval "$(~/.local/bin/mise activate bash)"
+
+mise use -g neovim@stable
+mise use -g gh@2.51.0
+mise use -g starship@1.19.0
+
+mise use -g fzf@0.53.0
+cp "$(mise where fzf)/shell/key-bindings.zsh" ~/.config/zsh/sources/fzf-key-bindings.enabled
+
+mise use -g java@corretto-8.422.05.1
+mise use -g maven@3.9.8
+
+append_to_bashrc "eval \"\$(~/.local/bin/mise activate bash)\""
+
+# zsh
+chsh_zsh
