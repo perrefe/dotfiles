@@ -46,17 +46,6 @@ function zsh_add_completion() {
 	if [ "$2" = true ] && compinit "${completion_file:1}"
 }
 
-# Source loaders
-function load_pyenv() {
-  zsh_add_file "sources/pyenv.manual"
-}
-function load_rvm() {
-  zsh_add_file "sources/rvm.manual"
-}
-function load_sdkman() {
-  zsh_add_file "$HOME/.sdkman/bin/sdkman-init.sh"
-}
-
 # User Functions
 function random() {
   len=$1
