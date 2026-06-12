@@ -33,5 +33,8 @@ disabled = true
 success_symbol = "❯❯[❯](green)"
 error_symbol = "❯❯[❯](red)"
 
+[git_branch]
+ignore_bare_repo = true
+
 [aws]
 disabled = true
