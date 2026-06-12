@@ -1,5 +1,4 @@
 brew "archiver"
-brew "borders"
 brew "coreutils"
 brew "direnv"
 brew "fzf"
@@ -14,7 +13,8 @@ brew "jq"
 brew "neovim"
 brew "pass"
 brew "ripgrep"
-brew "sketchybar"
+brew "felixkratz/formulae/borders", trusted: true
+brew "felixkratz/formulae/sketchybar", trusted: true
 brew "starship"
 brew "tldr"
 brew "tmux"
