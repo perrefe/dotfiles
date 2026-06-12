@@ -1,15 +1,1 @@
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
-fi
-
-# Auto-completion
-# ---------------
-if [[ -s /usr/local/opt/fzf/shell/completion.zsh ]]; then
-  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-fi
-
-# Key bindings
-# ------------
-[ -s /usr/local/opt/fzf/shell/key-bindings.zsh ] && source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+if command -v fzf > /dev/null 2>&1; then source <(fzf --zsh); fi
