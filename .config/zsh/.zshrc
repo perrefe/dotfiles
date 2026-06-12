@@ -1,6 +1,6 @@
 #[ -z "$ZPROF" ] || zmodload zsh/zprof
 # Environment variables
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Functions
 source "$ZDOTDIR/functions/base.zsh"
