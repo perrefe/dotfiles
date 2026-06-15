@@ -10,10 +10,11 @@ echo " |___/                        "
 echo "        ...bootstraping system $(uname -s)"
 echo ""
 
+sudo dnf copr enable jdxcode/mise -y
 sudo dnf copr enable atim/starship -y
 sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
   git gitflow tmux ca-certificates zip starship \
-  curl tldr zoxide fd-find ripgrep zsh \
+  mise curl tldr zoxide fd-find ripgrep zsh \
   just direnv jq neovim fzf zsh btop htop
 
 # Zsh as default shell
