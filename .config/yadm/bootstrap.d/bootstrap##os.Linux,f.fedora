@@ -25,3 +25,6 @@ sudo chsh -s "$(command -v zsh)" "$USER"
 
 # tmux plugin manager
 [ ! -d ~/.config/tmux/plugins/tpm ] && mkdir -p ~/.config/tmux/plugins && git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm || true
+
+# mise install globals
+mise install
