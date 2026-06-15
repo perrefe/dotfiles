@@ -12,9 +12,10 @@ echo ""
 
 sudo dnf copr enable jdxcode/mise -y
 sudo dnf copr enable atim/starship -y
+sudo dnf copr enable dejan/lazygit -y
 sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
   git gitflow tmux trash-cli ca-certificates zip starship \
-  mise curl tldr zoxide fd-find ripgrep zsh \
+  mise curl tldr zoxide fd-find ripgrep zsh lazygit \
   just direnv jq neovim fzf zsh btop htop
 
 # Zsh as default shell
