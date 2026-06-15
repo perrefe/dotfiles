@@ -10,13 +10,15 @@ echo " |___/                        "
 echo "        ...bootstraping system $(uname -s)"
 echo ""
 
+sudo dnf install dnf5-plugins
 sudo dnf copr enable jdxcode/mise -y
 sudo dnf copr enable atim/starship -y
 sudo dnf copr enable dejan/lazygit -y
+sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
   git gitflow tmux trash-cli ca-certificates zip starship \
   mise curl tldr zoxide fd-find ripgrep zsh lazygit \
-  just direnv jq neovim fzf zsh btop htop
+  just direnv jq neovim fzf zsh btop htop gh
 
 # Zsh as default shell
 sudo chsh -s "$(command -v zsh)" "$USER"
