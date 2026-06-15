@@ -13,7 +13,7 @@ echo ""
 sudo dnf copr enable jdxcode/mise -y
 sudo dnf copr enable atim/starship -y
 sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
-  git gitflow tmux ca-certificates zip starship \
+  git gitflow tmux trash-cli ca-certificates zip starship \
   mise curl tldr zoxide fd-find ripgrep zsh \
   just direnv jq neovim fzf zsh btop htop
 
