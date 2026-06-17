@@ -14,13 +14,13 @@ bind ` send-prefix
 #unbind C-b
 
 set-option -sg escape-time 10
-set-option -sg history-limit 32000
-set-option -sg default-shell /bin/zsh
-set-option -sg allow-rename off
+set-option -g history-limit 32000
+set-option -g default-shell /bin/zsh
+set-option -g allow-rename off
 set-option -sg history-file ~/.tmux_history
 # Start window and pane indices at 1.
-set-option -sg base-index 1
-set-option -sg pane-base-index 1
+set-option -g base-index 1
+set-option -g pane-base-index 1
 set-option -g renumber-windows on
 # Add true color & italics support with alacritty terminal
 # set-option -sg default-terminal "alacritty"
