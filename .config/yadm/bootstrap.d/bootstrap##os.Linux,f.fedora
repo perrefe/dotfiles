@@ -28,3 +28,17 @@ sudo chsh -s "$(command -v zsh)" "$USER"
 
 # mise install globals
 mise install
+
+# install nerdfont
+# download font
+wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+
+# create local font directory and unzip the font
+mkdir -p ~/.local/share/fonts
+unzip -d ~/.local/share/fonts /tmp/FiraCode.zip
+
+# update the font cache
+fc-cache -fv
+
+# remove downloaded archive
+rm /tmp/FiraCode.zip
