@@ -1,5 +1,6 @@
 brew "archiver"
 brew "coreutils"
+brew "croc"
 brew "direnv"
 brew "fzf"
 brew "fd"
