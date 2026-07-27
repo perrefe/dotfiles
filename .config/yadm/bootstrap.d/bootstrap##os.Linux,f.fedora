@@ -18,7 +18,7 @@ sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/
 sudo dnf makecache && sudo dnf autoremove -y && sudo dnf install -y --skip-unavailable \
   git gitflow tmux trash-cli ca-certificates zip starship \
   mise curl tldr zoxide fd-find ripgrep zsh lazygit \
-  just direnv jq neovim fzf zsh btop htop gh
+  just direnv jq neovim fzf zsh btop htop gh croc
 
 # Zsh as default shell
 sudo chsh -s "$(command -v zsh)" "$USER"
