@@ -1,16 +1,19 @@
 #[ -z "$ZPROF" ] || zmodload zsh/zprof
 # Environment variables
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export ZDOTDIR="$HOME/.config/zsh"
 
 # Functions
-source "$ZDOTDIR/functions/base.zsh"
+#source "$ZDOTDIR/functions/base.zsh"
+source "$HOME/.config/zsh/functions/base.zsh"
 
 # fpath
-#fpath=(~/.zsh_plugins $(brew --prefix)/share/zsh-completions $fpath)
-#fpath=(~/.zsh_plugins $fpath)
-fpath+=/usr/local/share/zsh/site-functions
+if type brew &>/dev/null; then
+  fpath+=$(brew --prefix)/share/zsh/site-functions
+fi
 fpath+="$ZDOTDIR/completions/"
 fpath+="$ZDOTDIR/plugins/"
+
 # Completions
 zmodload zsh/complist
 autoload -Uz compinit && compinit -i
@@ -22,16 +25,11 @@ _comp_options+=(globdots) # Include hidden files
 # Source files
 zsh_add_dir "sources"
 zsh_add_file "exports/base.zsh"
-zsh_add_file "exports/custom.zsh"
 zsh_add_file "aliases/base.zsh"
-zsh_add_file "aliases/custom.zsh"
-##zsh_add_file "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Plugins
 # zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
-
-# Autosuggestions
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
@@ -45,5 +43,3 @@ bindkey '^[OB' history-substring-search-down
 # Navigate through words with alt
 bindkey '^[[1;3D' backward-word
 bindkey '^[[1;3C' forward-word
-
-#[ -z "$ZPROF" ] || zprof
