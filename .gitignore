@@ -1,1 +1,4 @@
 .DS_Store
+.config/zsh/aliases/user.d/*
+.config/zsh/exports/user.d/*
+*.swp
