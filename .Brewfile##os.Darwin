@@ -1,3 +1,4 @@
+tap "felixkratz/formulae", trusted: true
 brew "archiver"
 brew "coreutils"
 brew "croc"
@@ -14,8 +15,8 @@ brew "jq"
 brew "neovim"
 brew "pass"
 brew "ripgrep"
-brew "felixkratz/formulae/borders", trusted: true
-brew "felixkratz/formulae/sketchybar", trusted: true
+brew "felixkratz/formulae/borders"
+brew "felixkratz/formulae/sketchybar"
 brew "starship"
 brew "tldr"
 brew "tmux"
