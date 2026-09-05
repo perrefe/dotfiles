@@ -1,5 +1,4 @@
 tap "felixkratz/formulae", trusted: true
-brew "archiver"
 brew "coreutils"
 brew "croc"
 brew "direnv"
