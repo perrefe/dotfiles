@@ -1,4 +1,5 @@
 .DS_Store
+.claude/settings.local.json
 .config/zsh/aliases/user.d/*
 .config/zsh/exports/user.d/*
 *.swp
