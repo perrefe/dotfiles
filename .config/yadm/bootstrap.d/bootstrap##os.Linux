@@ -26,6 +26,13 @@ if command -v zoxide > /dev/null 2>&1; then
   append_to_bashrc "eval \"\$(zoxide init bash)\""
 fi
 
+# install nerdfont
+wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+mkdir -p ~/.local/share/fonts
+unzip -d ~/.local/share/fonts /tmp/FiraCode.zip
+fc-cache -fv
+rm FiraCode.zip
+
 # tmux plugin manager
 [ ! -d ~/.tmux/plugins/tpm ] && mkdir -p ~/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
 
