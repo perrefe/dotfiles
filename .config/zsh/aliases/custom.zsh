@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# docker
-alias docker='nerdctl.lima'
-alias d='/usr/local/bin/nerdctl.lima'
-
 # kubernetes
 alias k='kubectl'
 
@@ -46,4 +42,4 @@ alias gst='git status'
 alias lg='lazygit'
 
 # nix programs
-alias figlet='nix run "nixpkgs#figlet"'
+#alias figlet='nix run "nixpkgs#figlet"'
