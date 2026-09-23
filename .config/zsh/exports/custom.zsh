@@ -1,6 +1,3 @@
-# Console editor
-export EDITOR=nvim
-
 # Loki CLI
 export LOKI_ADDR=http://192.168.13.11:33100
 
