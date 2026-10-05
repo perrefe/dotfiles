@@ -1,0 +1,80 @@
+# ~/.config/ghostty/config
+
+font-family = FiraCode Nerd Font
+font-size = 14
+font-style = Regular
+font-style-bold = Bold
+font-style-italic = Light
+font-style-bold-italic = SemiBold
+adjust-cell-height = 4
+adjust-font-baseline = 2
+
+background = #0b0b0b
+foreground = #c7c7c7
+
+cursor-color = #ffb472
+cursor-text  = #feffff
+
+selection-background = #f6f6f6
+selection-foreground = #5963a2
+
+# draw_bold_text_with_bright_colors = true
+bold-color = bright
+
+# colors.normal
+palette = 0=#2e2e2e
+palette = 1=#eb4129
+palette = 2=#abe047
+palette = 3=#f6c744
+palette = 4=#47a0f3
+palette = 5=#7b5cb0
+palette = 6=#64dbed
+palette = 7=#e5e9f0
+
+# colors.bright
+palette = 8=#565656
+palette = 9=#ec5357
+palette = 10=#c0e17d
+palette = 11=#f9da6a
+palette = 12=#49a4f8
+palette = 13=#a47de9
+palette = 14=#99faf2
+palette = 15=#ffffff
+
+cursor-style = block
+cursor-style-blink = true
+
+background-opacity = 0.9
+window-padding-x = 20,20
+window-padding-y = 10,0
+
+# ── Ratón y selección ────────────────────────────────────────────────
+mouse-hide-while-typing = false
+copy-on-select = clipboard
+selection-word-chars = ,│`|:"' ()[]{}<>	
+
+# Disable tabs
+keybind = super+t=ignore
+keybind = super+alt+w=ignore
+keybind = ctrl+tab=ignore
+keybind = ctrl+shift+tab=ignore
+keybind = super+shift+[=ignore
+keybind = super+shift+]=ignore
+keybind = super+1=ignore
+keybind = super+digit_1=ignore
+keybind = super+2=ignore
+keybind = super+digit_2=ignore
+keybind = super+3=ignore
+keybind = super+digit_3=ignore
+keybind = super+4=ignore
+keybind = super+digit_4=ignore
+keybind = super+5=ignore
+keybind = super+digit_5=ignore
+keybind = super+6=ignore
+keybind = super+digit_6=ignore
+keybind = super+7=ignore
+keybind = super+digit_7=ignore
+keybind = super+8=ignore
+keybind = super+digit_8=ignore
+keybind = super+9=ignore
+keybind = super+digit_9=ignore
