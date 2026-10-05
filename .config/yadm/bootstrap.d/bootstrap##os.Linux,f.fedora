@@ -31,8 +31,10 @@ sudo chsh -s "$(command -v zsh)" "$USER"
 mise install
 
 # install nerdfont
-wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
-mkdir -p ~/.local/share/fonts
-unzip -d ~/.local/share/fonts /tmp/FiraCode.zip
-fc-cache -fv
-rm FiraCode.zip
+if ! fc-list | grep -qi "FiraCode Nerd Font"; then
+  wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+  mkdir -p ~/.local/share/fonts
+  unzip -o -d ~/.local/share/fonts /tmp/FiraCode.zip
+  fc-cache -fv
+  rm /tmp/FiraCode.zip
+fi
