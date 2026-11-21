@@ -1,0 +1,48 @@
+-- Paneru Lua configuration (hot-reloaded on save).
+--
+-- Hook into window-manager events:
+--   paneru.on("window_focused", function(e) paneru.log("focused " .. e.window_id) end)
+--
+-- Bind keys to commands (chord syntax matches [bindings]):
+--   paneru.bind("alt - b", "window balance")
+--
+-- ...or to a function. Handlers are given the whole layout as a value they can
+-- transform; nothing moves until you return one, so computing a layout and
+-- discarding it costs nothing. See CONFIGURATION.md.
+--   paneru.bind("alt - j", function(ws)
+--     return ws:focus(ws:east(ws:focused()))
+--   end)
+paneru.setup {
+  options = {
+    -- Anchos disponibles para window grow/shrink (ratio del ancho de pantalla).
+    preset_column_widths = { 0.33, 0.5, 0.66, 0.75, 1.0 },
+    -- Se detiene en el mínimo/máximo en lugar de volver al otro extremo.
+    window_resize_cycle = false,
+    -- No centrar la ventana enfocada al cambiar de foco.
+    auto_center = false,
+    -- 1.0 = modo "perezoso": mueve el visor lo menos posible al enfocar.
+    window_hidden_ratio = 1.0,
+    -- Mantener cmd + shift y arrastrar con el mouse redimensiona la ventana;
+    -- la cercanía al borde izquierdo/derecho decide qué lado se ajusta.
+    mouse_resize_modifier = "cmd + shift",  },
+  bindings = {
+    -- window_fullwidth ya es un toggle nativo: la primera vez expande la
+    -- ventana a ancho completo, la segunda vez la devuelve a su tamaño anterior.
+    ["window fullwidth"] = "lcmd + shift - f",
+
+    -- Mover el foco entre ventanas en el strip.
+    -- north/south: si no hay ventana en esa dirección, cambia de display.
+    -- cmd + shift (izquierdos o derechos) + h/l. Los modificadores sin
+    -- prefijo (cmd, shift) aceptan cualquiera de los dos lados.
+    ["window focus west"]  = "cmd + shift - h",
+    ["window focus east"]  = "cmd + shift - l",
+
+    -- Reduce el ancho de la ventana enfocada (cicla por los anchos preset).
+    ["window shrink"]      = "cmd + shift - minus",
+    ["window grow"]        = "cmd + shift - equal",
+
+    -- Reordenar la ventana enfocada en la tira (intercambia con la vecina).
+    ["window swap west"]   = "cmd + shift + alt - h",
+    ["window swap east"]   = "cmd + shift + alt - l",
+  },
+}
